@@ -85,7 +85,7 @@ while running:
             grid = update_grid(grid)
 
     screen.fill((0,0,0))
-    print_grid(10,10,0,grid)
+    print_grid(10,10,5,grid)
     pygame.display.flip()
 
     clock.tick(60)
