@@ -42,23 +42,23 @@ def seed_grid(grid):
     return grid
 
 def update_grid(grid):
-    newgrid = [[0 for x in range(10)] for y in range(10)]
+    newgrid = [[False for x in range(10)] for y in range(10)]
     for x in range(10):
         for y in range(10):
             nr = count_neigh(x, y, grid)
             if grid[x][y]:
                 if (nr == 2) or (nr == 3):
-                    newgrid[x][y] = 1
+                    newgrid[x][y] = True
                 else:
-                    newgrid[x][y] = 0
+                    newgrid[x][y] = False
             else:
                 if nr == 3:
-                    newgrid[x][y] = 1
+                    newgrid[x][y] = True
     return newgrid
 
 def count_neigh(x, y, grid):
     nr = 0
-    for xx in range(x-1, x+2):
+    for xx in range(x-1, x+3):
         for yy in range(y-1, y+2):
             if (xx < 0 or xx > 9) or (yy < 0 or yy > 9):
                 pass
