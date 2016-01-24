@@ -46,15 +46,20 @@ def update_grid(grid):
     for x in range(10):
         for y in range(10):
             nr = count_neigh(x, y, grid)
-            if grid[x][y]:
-                if (nr == 2) or (nr == 3):
-                    newgrid[x][y] = True
-                else:
-                    newgrid[x][y] = False
-            else:
-                if nr == 3:
-                    newgrid[x][y] = True
+            newgrid[x][y] = update_cell(grid[x][y], nr)
     return newgrid
+
+def update_cell(old, nr):
+    new = False
+    if old:
+        if (nr == 2) or (nr == 3):
+            new = True
+        else:
+            new = False
+    else:
+        if nr == 3:
+            new = True
+    return new
 
 def count_neigh(x, y, grid):
     nr = 0
